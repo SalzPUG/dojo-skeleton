@@ -106,7 +106,8 @@ def main():
         if os.path.exists(env_dir):
             quit([
                 '`virtualenvwrapper` detected, but a virtualenv named {!r} '
-                'already exists.',
+                'already exists.  No virtualenv created.'
+                .format(project_name),
                 package_info
             ])
     # If virtualenvwrapper is not present, just create a virtualenv inside the
