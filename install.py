@@ -67,7 +67,12 @@ def main():
     # Create target directory
     cwd = os.path.dirname(os.path.abspath(__file__))
     target_dir = os.path.join(args.directory, project_name)
-    os.mkdir(target_dir)
+    try:
+        os.mkdir(target_dir)
+    except OSError:
+        print(u'Cannot create target directory {!r}, aborting.'
+              .format(target_dir))
+        sys.exit(2)
 
     # Copy the source files, and replace `kata` with the given project_name in
     # filenames as well as in contents
