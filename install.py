@@ -8,6 +8,7 @@ import os
 import re
 import subprocess
 import sys
+from shutil import copyfile
 
 
 def _decode_stdin(value):
@@ -76,7 +77,7 @@ def main():
 
     # Copy the source files, and replace `kata` with the given project_name in
     # filenames as well as in contents
-    for source in 'setup.cfg', 'kata.py', 'test_kata.py':
+    for source in 'setup.cfg', 'kata.py', 'test_kata.py', 'slides.html':
         source_file = os.path.join(cwd, source)
         target_filename = source.replace('kata', project_name)
         target_file = os.path.join(target_dir, target_filename)
@@ -84,6 +85,12 @@ def main():
             with codecs.open(target_file, 'w', 'utf-8') as f_out:
                 for line in f_in:
                     f_out.write(line.replace('kata', project_name))
+
+    # Copy the source files without replace
+    for source in 'salzpug.svg', 'tdd.gif':
+        src = os.path.join(cwd, source)
+        dst = os.path.join(target_dir, source)
+        copyfile(src, dst)
 
     # Check for virtualenv
     packages = ['nose', 'nosy', 'yanc']
