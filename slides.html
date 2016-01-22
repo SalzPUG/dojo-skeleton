@@ -112,8 +112,8 @@
       def test_1_returns_1():
           assert_equal(fizzbuzz.fizzbuzz(1), "1")
 
-      def test_2_returns_2():
-          assert_equal(fizzbuzz.fizzbuzz(2), "2")
+      *def test_2_returns_2():
+      *   assert_equal(fizzbuzz.fizzbuzz(2), "2")
       ```
 
       --
@@ -137,8 +137,8 @@
       def test_2_returns_2():
           assert_equal(fizzbuzz.fizzbuzz(2), "2")
 
-      def test_3_returns_Fizz():
-          assert_equal(fizzbuzz.fizzbuzz(2), "Fizz")
+      *def test_3_returns_Fizz():
+      *   assert_equal(fizzbuzz.fizzbuzz(3), "Fizz")
       ```
 
       --
@@ -228,7 +228,9 @@
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
     <script>
-      var slideshow = remark.create();
+      var slideshow = remark.create({
+        highlightLines: true
+      });
     </script>
   </body>
 </html>
